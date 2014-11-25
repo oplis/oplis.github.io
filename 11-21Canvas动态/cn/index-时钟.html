@@ -1,0 +1,200 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title> 月亮好圆哦 </title>
+<meta name="Generator" content="EditPlus">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="../css/reset.css">
+<script src="../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	.wrap {
+		position: relative;;
+		width: 600px;
+		height:600px;
+		margin:10px auto;
+		background: #ffcc99;
+	}
+	.wrap div {
+		position: absolute;
+	}
+</style>
+</head>
+ <body>
+	<div class="wrap">
+		<canvas width='600' height="600"></canvas>
+	</div>
+</body>
+<script type="text/javascript">
+	var testCanvas = $("canvas")[0];
+	var context = testCanvas.getContext("2d");
+
+	context.fillStyle="green";
+	context.beginPath();
+	context.arc(300,300,295,0,Math.PI*2,false);
+	context.closePath();
+	context.stroke();
+	context.fill();
+	context.translate(300,300);//平移
+	//context.rotate(0);
+
+
+
+
+	//for (var i = 0; i < 1; i++) {
+	context.rotate(6);//旋转
+	context.beginPath();//开始
+	context.moveTo(0,270);//起点
+	context.lineTo(0,295);//终点
+	context.closePath();//结束
+	context.stroke();//绘制		
+
+	//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//context.beginPath();
+	//context.strokeSytle="yellow";
+	//context.fillStyle="green";
+	//context.scale(2,2);//放大
+	//context.rotate(Math.PI / 30);//旋转
+	//context.translate(50,100);//平移
+//	context.rect(50,10,300,300);
+	//context.closePath();
+	//context.stroke();
+	//context.fill();
+
+
+	var x = 0;
+	var a = 1;
+	var speed = 3;
+
+
+	/*
+	 * 绘图
+	 */
+	function darw () {
+		x += a;
+		if (x == 500 ){
+			a = -1;
+		}
+		if (x == 0){
+			a = 1;
+		}
+		context.clearRect(0,0,800,800);//清除
+		context.fillStyle="#ffffcc";
+		context.beginPath();
+		context.rect(x,10,300,100);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+
+		//画轮胎
+		context.fillStyle="green";
+		context.beginPath();
+		context.arc(80+x,110,30,0,Math.PI*2,false);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+
+
+		context.beginPath();
+		context.arc(220+x,110,30,0,Math.PI*2,false);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+context.beginPath();//开始
+//context.rotate(Math.PI / 350);//旋转
+context.save();//保存当前状态(坐标)
+context.translate(80+x,110);//平移
+context.rotate((x/50));//旋转
+context.moveTo(0,-30);//起点
+context.lineTo(0,30);//终点
+context.moveTo(-30,0);//起点
+context.lineTo(30,0);//终点
+context.closePath();//结束
+context.stroke();//绘制
+context.restore();//恢复状态（起始坐标）
+
+context.beginPath();//开始
+//context.rotate(Math.PI / (360-x));//旋转
+
+context.save();//保存当前状态(坐标)
+context.translate(220+x,110);//平移
+context.rotate((x/50));//旋转
+context.moveTo(0,-30);//起点
+context.lineTo(0,30);//终点
+context.moveTo(-30,0);//起点
+context.lineTo(30,0);//终点
+context.closePath();//结束
+context.stroke();//绘制		
+
+context.restore();//恢复状态（起始坐标）
+	}//darw();
+	//setInterval(darw,speed);
+
+	function aa (){
+		x++;
+		context.beginPath();
+		context.rotate(Math.PI / (360-x));//旋转
+		context.clearRect(0,0,800,800);//清除
+		context.arc(220,110,30,0,Math.PI*2,false);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+context.beginPath();//开始
+context.moveTo(190,110);//起点
+context.lineTo(250,110);//终点
+context.lineTo(220,110);//终点
+context.lineTo(220,140);//终点
+context.lineTo(220,80);//终点
+context.lineTo(220,110);//终点
+context.closePath();//结束
+context.stroke();//绘制		
+	}
+	//setInterval(aa,1);
+</script>
+</html>
